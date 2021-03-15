@@ -63,12 +63,13 @@ class products
                         ) 
                       VALUES 
                       (
-                          $this->product_name,
-                          $this->product_detail,
+                          '$this->product_name',
+                          '$this->product_detail',
                           $this->product_price,
                           $this->tax,
-                          $this->products_photo,
+                          '$this->products_photo'
                       )";
+                      
         $this->id = $db->insert_query($query);
         return true;
     }
@@ -76,13 +77,14 @@ class products
     public function update_products()
     {
         $db = new db();
+        
         $query = "UPDATE `products` SET
                         id = $this->id,
-                        product_name = $this->product_name, 
-                        product_detail = $this->product_detail, 
-                        product_price = $this->product_price, 
-                        tax = $this->tax,
-                        products_photo = $this->products_photo
+                        product_name = '$this->product_name', 
+                        product_detail = '$this->product_detail', 
+                        product_price = '$this->product_price', 
+                        tax = '$this->tax',
+                        products_photo = '$this->products_photo'
                     WHERE
                         id = $this->id
                     ";
